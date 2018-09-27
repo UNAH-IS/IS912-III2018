@@ -1,0 +1,50 @@
+schoology.com
+WR4M9-P5JDX
+
+
+HTML (Hyper Text Markup Language):
+Se utiliza para definir la estructura de una pagina web.
+
+
+XML (Extensible Markup Language):
+Es un lenguaje de marcas para almacenar y transportar información.
+<persona>
+    <nombre>Juan</nombre>
+    <apellido>Martinez</apellido>
+    <edad>45</edad>
+    <genero>M</genero>    
+</persona>
+
+CSV (comma-separated values)
+Juan,Martinez,45,M
+
+JSON
+persona ={
+    nombre:"Juan",
+    apellido:"Pedro",
+    edad,
+    genero:"M"
+}
+
+
+
+
+Crear un proyecto en NodeJS con su servidor.
+0. Instalar NodeJS (incluye el npm [node package manager])
+
+1. Crear una carpeta vacia.
+2. Acceder a la carpeta desde una consola
+3. Crear un nuevo proyecto vacio de NodeJS utilizando el siguiente comando:
+    npm init
+4. Instalar el modulo del framework express con el siguiente comando:
+    npm install express --save
+    (El parametro --save agrega la dependencia en el archivo package.json)
+5. Codificar el servidor en el archivo index.js con el siguiente codigo:
+
+        var express = require("express"); //Importar el framework express
+        var app = express(); //Inicializar la aplicacion con express
+        app.use(express.static("public")); //Publicar un directorio de archivos estaticos
+        app.listen(8001);//Levantar el servidor y escuchar en el puerto indicado
+
+6. Ejecutar el archivo index.js utilizando el siguiente comando:
+    	node index.js
