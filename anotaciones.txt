@@ -48,3 +48,51 @@ Crear un proyecto en NodeJS con su servidor.
 
 6. Ejecutar el archivo index.js utilizando el siguiente comando:
     	node index.js
+
+CSS (Cascading Style Sheets)
+Sintaxis para aplicar estilos CSS:
+    estilo1:valor1;
+    estilo2:valor2;
+    ...
+    estiloN:valorN;
+
+Formas de incluir css en una página web:
+    En linea: Se incrusta con el atributo style en la etiqueta que desea aplicar el estilo.
+    En el encabezado: Se utiliza la etiqueta style dentro de la etiqueta head.
+        Para definir los estilos se utilizan selectores cuyo objetivo es seleccionar una o varias etiquetas para aplicar estilos:
+        tipo-selector{
+            estilo1:valor1;
+            estilo2:valor2;
+            ...
+            estiloN:valorN;
+        }
+
+        nombre-etiqueta{
+            /*estilos*/
+        }
+
+        #id{
+            /*estilos*/
+        }
+
+        .clase{
+            /*estilos*/
+        }
+
+        #id, .clase, nombre-etiqueta{
+            /*estilos*/
+        }
+
+
+    En un archivo externo
+
+
+
+
+
+
+*Orden del padding, margin o similares.
+padding: arriba derecha abajo izquierda;
+
+*En caso de querer centrar el contenido de forma vertical ubicar las siguientes propiedades css en el contenedor padre:
+display:flex;justify-content: center;align-items: center

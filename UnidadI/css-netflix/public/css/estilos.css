@@ -1,0 +1,44 @@
+input[type="text"], input[type="password"]{
+    width: 100%;
+    font-size: 18px;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    border: 0px;
+    background-color: #333333;
+    color: grey;
+    margin-top:10px;
+    margin-bottom:10px;
+    box-sizing: border-box;
+}
+
+.boton{
+    width: 100%;
+    color: white;
+    padding: 1rem;
+    font-size: 16px;
+    border-style: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom:10px;
+}
+
+.boton-rojo{
+    background-color: red;
+}
+
+.boton-verde{
+    background-color: green;
+}
+
+a{
+    color:white;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+#login:hover{
+    background-color:rgba(88, 3, 3, 0.698);
+}
