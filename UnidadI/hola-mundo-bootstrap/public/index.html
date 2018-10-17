@@ -6,9 +6,34 @@
     <title>Etiquetas básicas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+    <style>
+        .btn-danger{
+            background-color:black;
+            border-color:black;
+        }
+
+        .titulos{
+            color:green;
+        }
+
+        #titulo-principal{
+            color: cyan;
+        }
+
+        h1{
+            color:orange;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Etiquetas para formularios</h1>
+    <!--Prioridad dependiendo de los tipos de selectores o formas de incluir css
+            1. Estilos en linea
+            2. Selector por #ID
+            3. Selector por .ClaseCSS
+            4. Selector por nombre de etiqueta
+    -->
+    <h1 class="titulos" id="titulo-principal" style="color: red;">Etiquetas para formularios</h1>
     <!--
         Form:
         Se utiliza para agrupar componentes de formularios.

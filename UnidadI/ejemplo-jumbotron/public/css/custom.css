@@ -1,0 +1,17 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+  padding-top: 3.5rem;
+}
+
+.bg-dark {
+  background-color: #48649F!important;
+}
+
+.btn-primary {
+  background-color: #365899;
+  border-color: #365899;
+}
+
+.jumbotron {
+  background-color: #EDF0F5;
+}
