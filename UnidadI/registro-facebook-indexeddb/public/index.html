@@ -53,7 +53,18 @@
                 <td><strong>Find more</strong> of what you're looking for with Facebook Search. </td>
               </tr>
             </table>
-            <table class="table table-striped table-hover" id="tabla-usuarios">          
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <td>Nombre</td>
+                  <td>Apellido</td>
+                  <td>Correo</td>
+                  <td>Fecha</td>
+                </tr>
+              </thead>
+              <tbody id="contenido-tabla">
+                
+              </tbody>
             </table>
          </div>
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -73,7 +84,7 @@
                 <div class="invalid-feedback">Esta mal</div>
               </div>
               <div class="col-12">
-                <input value="juan@gami.com" class="form-control" type="text" placeholder="Mobile number or email" id="email" onkeyup="validarCorreo(this)">
+                <input value="juan@gami.com" class="form-control" type="text" placeholder="Mobile number or email" id="email">
                 <div class="valid-feedback">Es bien</div>
                 <div class="invalid-feedback">Esta mal</div>
               </div>
@@ -96,6 +107,10 @@
                 </p>
                 <br>
                 <input class="btn btn-success" type="button" value="Sign Up" onclick="registrar();">
+                <!--div id="contenido" style="background-color:black; color:white; height: 60px">
+
+                </div>
+                <input type="button" value="Agregar contenido" onclick="agregarContenido();"-->
               </div>
               
             </div>
