@@ -1,0 +1,61 @@
+<!--
+
+manipular el árbol DOM, 
+manejar eventos, 
+desarrollar animaciones y 
+agregar interacción con la técnica AJAX 
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <input id="usuario" type="text" placeholder="Usuario">
+    <input id="password" type="password" placeholder="Password">
+    <button id="btn-login" type="button">Login</button>
+    <button id="btn-llenar" type="button">Llenar informacion</button>
+    <button id="btn-ocultar" type="button">Ocultar DIV</button>
+    <button id="btn-mostrar" type="button">Mostrar DIV</button>
+    <div id="contenido" style="background-color:black; color:#ffffff;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita aspernatur dolore quas dolorem, vitae, culpa quae sint saepe nihil qui omnis optio fugit ad eligendi corrupti. Eveniet laboriosam, omnis quidem iure ipsa voluptas cupiditate inventore minus facere eligendi quaerat quos necessitatibus soluta pariatur enim! Tempore ipsam, ipsum recusandae minus optio eos veritatis. Similique consequuntur minus perspiciatis, atque nobis quibusdam quod iure optio eius aperiam adipisci quas temporibus officiis blanditiis rerum obcaecati cumque dolorem neque reprehenderit illo accusamus aliquam rem? Nobis porro totam in, voluptatibus vero ad voluptates incidunt perferendis est, enim, neque quas beatae aut laboriosam ipsa doloremque natus dicta!
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(".clase-x,#usuario")
+        $("input");
+        $("input[type='password']")
+
+        $("#btn-login").click(function(){
+            //Las instrucciones que se ejecutaran al hacer click
+            //console.log(document.getElementById("usuario").value);
+            //console.log(document.getElementById("password").value);
+
+            console.log($("#usuario").val());
+            console.log($("#password").val());
+            $("#contenido").html(`Usuario: ${$("#usuario").val()}`);
+        });
+
+        $("#btn-llenar").click(function(){
+            $("#usuario").val("Pedro");
+            $("#password").val("asd.456");
+            
+            //document.getElementById("contenido").innerHTML = "Cualquier cosa";
+            $("#contenido").html(`Usuario: ${$("#usuario").val()}`);
+        });
+
+        $("#btn-ocultar").click(function(){
+            //document.getElementById("contenido").style.display ="none";
+            $("#contenido").fadeOut(100);
+        });
+        $("#btn-mostrar").click(function(){
+            //document.getElementById("contenido").style.display ="block";
+            $("#contenido").fadeIn(100);
+        });
+    </script>
+</body>
+</html>

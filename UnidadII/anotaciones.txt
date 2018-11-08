@@ -1,0 +1,12 @@
+Para transmitir información del cliente al servidor se puede hacer de las siguientes formas:
+    *Peticiones/Solicitudes Sincronas:
+        -Es necesario que todos los componentes del formulario esten dentro de la etiqueta form.
+        -Se debe utilizar el atributo action para indicar el recurso del lado del servidor a donde se enviara la información.
+        -En el atributo method se debe indicar el metodo de envio de la información, los metodos más comunes son: GET y POST
+            GET: La información se envia mediante la URL en formato URLEncoded
+                dominio:puerto?parametro1=valor1&parametro2=valor2&...&parametroN=valorN
+            POST:     
+        -Todos los componentes del formulario deben tener el atributo name.
+        -Para desencadenar la peticion sincrona es necesario un boton del tipo submit.
+
+    *Peticiones/Solicitudes Asincronas
