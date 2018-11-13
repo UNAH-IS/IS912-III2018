@@ -7,16 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <form action="/procesar" method="GET">
-        <input type="text" name="nombre" placeholder="Nombre"><br>
-        <input type="text" name="apellido" placeholder="Apellido"><br>
-        <input type="text" name="edad" placeholder="Edad"><br>
-        <input type="text" name="fecha" placeholder="Fecha de nacimiento"><br>
-        <input type="text" name="password" placeholder="Password"><br>
+    <form action="/procesar" method="POST">
+        <input value="Juan" type="text" name="nombre" placeholder="Nombre"><br>
+        <input value="Perez" type="text" name="apellido" placeholder="Apellido"><br>
+        <input value="44" type="text" name="edad" placeholder="Edad"><br>
+        <input value="12/12/12" type="text" name="fecha" placeholder="Fecha de nacimiento"><br>
+        <input value="asd.456" type="text" name="password" placeholder="Password"><br>
         <select>
             <option>Seleccione un pais</option>
             <option value="1">Honduras</option>
-            <option value="2">Nicaragua</option>
+            <option value="2" selected>Nicaragua</option>
             <option value="3">Guatemala</option>
             <option value="4">Intibuca</option>
         </select><br>

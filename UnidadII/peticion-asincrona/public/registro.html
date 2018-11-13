@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <form>
+        <input value="Juan" type="text" id="nombre" placeholder="Nombre"><br>
+        <input value="Perez" type="text" id="apellido" placeholder="Apellido"><br>
+        <input value="44" type="text" id="edad" placeholder="Edad"><br>
+        <input value="12/12/12" type="text" id="fecha" placeholder="Fecha de nacimiento"><br>
+        <input value="asd.456" type="text" id="password" placeholder="Password"><br>
+        <select id="pais">
+            <option>Seleccione un pais</option>
+            <option value="Honduras">Honduras</option>
+            <option value="Nicaragua">Nicaragua</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Intibuca">Intibuca</option>
+        </select><br>
+        <button id="btn-registrar" type="button">Registrar</button>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Password</th>
+                    <th>Pais</th>
+                </tr>
+            </thead>
+            <tbody id="contenido-tabla">
+                
+            </tbody>
+        </table>
+    </form>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //Se cargo todo el DOM
+            $.ajax({
+                url: "/usuarios",
+                method:"GET",
+                dataType:"json",
+                success:function(res){
+                    console.log(res);
+                    res.forEach(element => {
+                        $("#contenido-tabla").append(`
+                            <tr>
+                                <td>${element.nombre}</td>
+                                <td>${element.apellido}</td>
+                                <td>${element.edad}</td>
+                                <td>${element.password}</td>
+                                <td>${element.pais}</td>
+                            </tr>`
+                        )
+                    });
+                },
+                error:function(error){
+                    console.error(error);
+                }
+            });
+        });
+
+        $("#btn-registrar").click(function(){
+            var parametros = `nombre=${$("#nombre").val()}&apellido=${$("#apellido").val()}&edad=${$("#edad").val()}&password=${$("#password").val()}&fecha=${$("#fecha").val()}&pais=${$("#pais").val()}`;
+            console.log(parametros);
+            $.ajax({
+                url:"/guardar",
+                method:"GET",
+                data: parametros,
+                dataType:"json", //json
+                success: function(respuesta){ //200 OK
+                    console.log(respuesta);
+                },
+                error:function(error){
+                    console.error(error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
