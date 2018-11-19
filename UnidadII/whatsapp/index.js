@@ -11,6 +11,8 @@ var credenciales = {
 };
 
 app.use(express.static("public"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/usuarios", function(req,res){
     var conexion = mysql.createConnection(credenciales);
@@ -80,6 +82,27 @@ app.get("/mensajes",function(req,res){
         ],
         function(error, data, fields){
             res.send(data);
+            res.end();
+        }
+    );
+});
+
+app.post("/enviar-mensaje",function(req,res){
+    var conexion = mysql.createConnection(credenciales);
+    console.log(req.body);
+    conexion.query(
+        "insert into tbl_mensajes(codigo_usuario_emisor, codigo_usuario_receptor, mensaje, hora_mensaje) values(?,?,?,?);",
+        [
+            req.body.codigo_usuario_emisor,
+            req.body.codigo_usuario_receptor,
+            req.body.mensaje,
+            req.body.hora_mensaje
+        ],
+        function(error, data, fields){
+            if (error)
+                res.send(error);    
+            else
+                res.send(data);
             res.end();
         }
     );

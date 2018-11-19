@@ -1,10 +1,12 @@
 $("#slc-usuario").change(function(){
-	alert("USUARIO seleccionado: " + $("#slc-usuario").val());
+	//alert("USUARIO seleccionado: " + $("#slc-usuario").val());
 });
 
-function seleccionarContacto(codigoContacto, nombreContacto){
-	alert("Obtener conversación entre: " + codigoContacto + ",  y " + $("#slc-usuario").val());
+function seleccionarContacto(codigoContacto, nombreContacto, urlImagen){
+	//alert("Obtener conversación entre: " + codigoContacto + ",  y " + $("#slc-usuario").val());
 	console.log(`/mensajes/${$("#slc-usuario").val()}/${codigoContacto}`);
+	$("#contacto-seleccionado").html(nombreContacto);
+	$("#imagen-contacto").attr("src",urlImagen);
 	$.ajax({
 		url:`/mensajes/${$("#slc-usuario").val()}/${codigoContacto}`,
 		method:"GET",
@@ -52,7 +54,7 @@ $(document).ready(function(){
 			for (var i=0;i<res.length;i++){
 				$("#slc-usuario").append(`<option value="${res[i].codigo_usuario}">${res[i].nombre_usuario}</option>`);
 				$("#contactos").append(
-					`<div class="row sideBar-body" onclick="seleccionarContacto(${res[i].codigo_usuario},'${res[i].nombre_usuario}');">
+					`<div class="row sideBar-body" onclick="seleccionarContacto(${res[i].codigo_usuario},'${res[i].nombre_usuario}','${res[i].url_imagen_perfil}');">
 						<div class="col-sm-3 col-xs-3 sideBar-avatar">
 						<div class="avatar-icon">
 							<img src="${res[i].url_imagen_perfil}">
