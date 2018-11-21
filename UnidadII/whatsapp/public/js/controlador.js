@@ -4,9 +4,13 @@ $("#slc-usuario").change(function(){
 
 function seleccionarContacto(codigoContacto, nombreContacto, urlImagen){
 	//alert("Obtener conversación entre: " + codigoContacto + ",  y " + $("#slc-usuario").val());
-	console.log(`/mensajes/${$("#slc-usuario").val()}/${codigoContacto}`);
+	$("#receptor").val(codigoContacto);
 	$("#contacto-seleccionado").html(nombreContacto);
 	$("#imagen-contacto").attr("src",urlImagen);
+	cargarConversacion(codigoContacto);
+}
+
+function cargarConversacion(codigoContacto){
 	$.ajax({
 		url:`/mensajes/${$("#slc-usuario").val()}/${codigoContacto}`,
 		method:"GET",
@@ -18,20 +22,7 @@ function seleccionarContacto(codigoContacto, nombreContacto, urlImagen){
 				var claseCss="receiver";
 				if (res[i].codigo_usuario_emisor == $("#slc-usuario").val())
 					claseCss="sender";
-				$("#conversation").append(
-					`<div class="row message-body">
-					<div class="col-sm-12 message-main-${claseCss}">
-					  <div class="${claseCss}">
-						<div class="message-text">
-						 ${res[i].mensaje}
-						</div>
-						<span class="message-time pull-right">
-						  ${res[i].hora_mensaje}
-						</span>
-					  </div>
-					</div>
-				  </div>`
-				);
+				anexarMensaje(claseCss,res[i].mensaje,res[i].hora_mensaje);
 			}
 		},
 		error:function(error){
@@ -40,8 +31,47 @@ function seleccionarContacto(codigoContacto, nombreContacto, urlImagen){
 	});
 }
 
+function anexarMensaje(claseCss,mensaje,hora_mensaje){
+	$("#conversation").append(
+		`<div class="row message-body">
+		<div class="col-sm-12 message-main-${claseCss}">
+		  <div class="${claseCss}">
+			<div class="message-text">
+			 ${mensaje}
+			</div>
+			<span class="message-time pull-right">
+			  ${hora_mensaje}
+			</span>
+		  </div>
+		</div>
+	  </div>`
+	);
+}
+
 $("#btn-enviar").click(function(){
-	alert("Enviar mensaje: " + $("#txta-mensaje").val());
+	/*alert("Enviar mensaje: " + $("#txta-mensaje").val() + 
+			", Emisor: " + $("#slc-usuario").val() + 
+			", Receptor: " + $("#receptor").val());*/
+
+	$.ajax({
+		url:"/enviar",
+		data:`emisor=${$("#slc-usuario").val()}&receptor=${$("#receptor").val()}&mensaje=${$("#txta-mensaje").val()}&hora=66:66`,
+		dataType:"json",
+		method:"POST",
+		success:function(res){
+			console.log(res);
+			if (res.affectedRows==1){
+				claseCss="sender";
+				anexarMensaje(claseCss,$("#txta-mensaje").val(),"66:66");
+				$("#txta-mensaje").val("");
+			}else{
+				alert("Error al guardar mensaje");
+			}
+		},
+		error:function(error){
+			console.log(error);
+		}
+	});
 });
 
 $(document).ready(function(){
@@ -80,4 +110,12 @@ $(document).ready(function(){
 			console.error(error);
 		}
 	});
+
+	setInterval(function(){
+			if($("#receptor").val()!=""){
+				$("#conversation").html("");
+				cargarConversacion($("#receptor").val());
+			}
+		},	5000
+	);
 });

@@ -42,7 +42,8 @@ app.get("/mensajes/:usuarioEmisor/:usuarioReceptor",function(req, res){
         inner join tbl_usuarios c
             on(a.codigo_usuario_receptor = c.codigo_usuario)
         where (codigo_usuario_emisor = ? and codigo_usuario_receptor = ?)
-        or (codigo_usuario_emisor = ? and codigo_usuario_receptor = ?);`,
+        or (codigo_usuario_emisor = ? and codigo_usuario_receptor = ?)
+        order by codigo_mensaje;`,
         [
             req.params.usuarioEmisor,
             req.params.usuarioReceptor,
@@ -73,7 +74,8 @@ app.get("/mensajes",function(req,res){
         inner join tbl_usuarios c
             on(a.codigo_usuario_receptor = c.codigo_usuario)
         where (codigo_usuario_emisor = ? and codigo_usuario_receptor = ?)
-        or (codigo_usuario_emisor = ? and codigo_usuario_receptor = ?);`,
+        or (codigo_usuario_emisor = ? and codigo_usuario_receptor = ?)
+        order by codigo_mensaje;`,
         [
             req.query.usuarioEmisor,
             req.query.usuarioReceptor,
@@ -87,23 +89,24 @@ app.get("/mensajes",function(req,res){
     );
 });
 
-app.post("/enviar-mensaje",function(req,res){
+app.post("/enviar",function(req,res){
     var conexion = mysql.createConnection(credenciales);
-    console.log(req.body);
     conexion.query(
-        "insert into tbl_mensajes(codigo_usuario_emisor, codigo_usuario_receptor, mensaje, hora_mensaje) values(?,?,?,?);",
+        "INSERT INTO tbl_mensajes(codigo_usuario_emisor, codigo_usuario_receptor, mensaje, hora_mensaje) VALUES (?,?,?,?)",
         [
-            req.body.codigo_usuario_emisor,
-            req.body.codigo_usuario_receptor,
+            req.body.emisor,
+            req.body.receptor,
             req.body.mensaje,
-            req.body.hora_mensaje
+            req.body.hora
         ],
         function(error, data, fields){
-            if (error)
-                res.send(error);    
-            else
+            if (error){
+                res.send(error);
+                res.end();
+            }else{
                 res.send(data);
-            res.end();
+                res.end();
+            }
         }
     );
 });
