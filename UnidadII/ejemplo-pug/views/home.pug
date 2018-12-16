@@ -1,0 +1,8 @@
+html
+    head
+        title Home
+    body
+        h1 Hola #{usuario} #{apellido}
+        select#lista.color-rojo.fondo-negro
+            -for(var i=0;i<10;i++)
+                option(value="#{i}") Opcion #{i}
